@@ -1,23 +1,23 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import { useSuspenseQuery } from '@tanstack/react-query'
-import { postQueryOptions } from '../utils/posts'
-import { PostErrorComponent } from './posts.$postId'
+import { Link, createFileRoute } from "@tanstack/react-router"
+import { useSuspenseQuery } from "@tanstack/react-query"
+import { postQueryOptions } from "../utils/posts"
+import { PostErrorComponent } from "./posts.$postId"
 
-export const Route = createFileRoute('/posts_/$postId/deep')({
+export const Route = createFileRoute("/posts_/$postId/deep")({
   loader: async ({ params: { postId }, context }) => {
     const data = await context.queryClient.ensureQueryData(
-      postQueryOptions(postId),
+      postQueryOptions(postId)
     )
 
     return {
-      title: data.title,
+      title: data.title
     }
   },
   head: ({ loaderData }) => ({
-    meta: loaderData ? [{ title: loaderData.title }] : undefined,
+    meta: loaderData ? [{ title: loaderData.title }] : undefined
   }),
   errorComponent: PostErrorComponent,
-  component: PostDeepComponent,
+  component: PostDeepComponent
 })
 
 function PostDeepComponent() {
@@ -25,7 +25,7 @@ function PostDeepComponent() {
   const postQuery = useSuspenseQuery(postQueryOptions(postId))
 
   return (
-    <div className="p-2 space-y-2">
+    <div className="space-y-2 p-2">
       <Link
         to="/posts"
         className="block py-1 text-blue-800 hover:text-blue-600"

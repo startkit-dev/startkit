@@ -1,27 +1,27 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
-import {} from '@tanstack/react-router'
-import { Suspense, useState } from 'react'
+import { createFileRoute } from "@tanstack/react-router"
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
+import {} from "@tanstack/react-router"
+import { Suspense, useState } from "react"
 
 const deferredQueryOptions = () =>
   queryOptions({
-    queryKey: ['deferred'],
+    queryKey: ["deferred"],
     queryFn: async () => {
       await new Promise((r) => setTimeout(r, 3000))
       return {
         message: `Hello deferred from the server!`,
-        status: 'success',
-        time: new Date(),
+        status: "success",
+        time: new Date()
       }
-    },
+    }
   })
 
-export const Route = createFileRoute('/deferred')({
+export const Route = createFileRoute("/deferred")({
   loader: ({ context }) => {
     // Kick off loading as early as possible!
     context.queryClient.prefetchQuery(deferredQueryOptions())
   },
-  component: Deferred,
+  component: Deferred
 })
 
 function Deferred() {
