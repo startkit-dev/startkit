@@ -1,19 +1,22 @@
 /// <reference types="vite/client" />
-import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary"
-import { NotFound } from "@/components/NotFound"
+import "@fontsource-variable/geist"
+import "@fontsource-variable/geist-mono"
+import { Devtools } from "@/components/dev/devtools"
+import { DefaultCatchBoundary } from "@/components/errors/default-catch-boundary"
+import { NotFound } from "@/components/errors/not-found"
+import { ThemeProvider } from "@/components/themes/theme-provider"
+import { seo } from "@/lib/seo"
 import appCss from "@/styles/app.css?url"
-import { seo } from "@/utils/seo"
+import monoFont from "@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url"
+import sansFont from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url"
 import { type QueryClient } from "@tanstack/react-query"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import {
   createRootRouteWithContext,
   HeadContent,
-  Link,
   Outlet,
   Scripts
 } from "@tanstack/react-router"
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools"
-import * as React from "react"
+import { type PropsWithChildren } from "react"
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient
@@ -27,18 +30,47 @@ export const Route = createRootRouteWithContext<{
         name: "viewport",
         content: "width=device-width, initial-scale=1"
       },
-      ...seo({
-        title:
-          "TanStack Start | Type-Safe, Client-First, Full-Stack React Framework",
-        description: `TanStack Start is a type-safe, client-first, full-stack React framework. `
-      })
+      {
+        name: "theme-color",
+        media: "(prefers-color-scheme: light)",
+        content: "#FFFFFF"
+      },
+      {
+        name: "theme-color",
+        media: "(prefers-color-scheme: dark)",
+        content: "#09090b"
+      },
+      ...seo()
     ],
     links: [
-      { rel: "stylesheet", href: appCss },
+      {
+        rel: "stylesheet",
+        href: appCss
+      },
+      {
+        rel: "preload",
+        href: sansFont,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous"
+      },
+      {
+        rel: "preload",
+        href: monoFont,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous"
+      },
       {
         rel: "apple-touch-icon",
         sizes: "180x180",
         href: "/apple-touch-icon.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png"
       },
       {
         rel: "icon",
@@ -49,11 +81,16 @@ export const Route = createRootRouteWithContext<{
       {
         rel: "icon",
         type: "image/png",
-        sizes: "16x16",
-        href: "/favicon-16x16.png"
+        sizes: "192x192",
+        href: "/android-chrome-192x192.png"
       },
-      { rel: "manifest", href: "/site.webmanifest", color: "#fffff" },
-      { rel: "icon", href: "/favicon.ico" }
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "512x512",
+        href: "/android-chrome-512x512.png"
+      },
+      { rel: "manifest", href: "/site.webmanifest", color: "#fffff" }
     ]
   }),
   errorComponent: (props) => {
@@ -75,69 +112,17 @@ function RootComponent() {
   )
 }
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <div className="flex gap-2 p-2 text-lg">
-          <Link
-            to="/"
-            activeProps={{
-              className: "font-bold"
-            }}
-            activeOptions={{ exact: true }}
-          >
-            Home
-          </Link>{" "}
-          <Link
-            to="/posts"
-            activeProps={{
-              className: "font-bold"
-            }}
-          >
-            Posts
-          </Link>{" "}
-          <Link
-            to="/users"
-            activeProps={{
-              className: "font-bold"
-            }}
-          >
-            Users
-          </Link>{" "}
-          <Link
-            to="/route-a"
-            activeProps={{
-              className: "font-bold"
-            }}
-          >
-            Pathless Layout
-          </Link>{" "}
-          <Link
-            to="/deferred"
-            activeProps={{
-              className: "font-bold"
-            }}
-          >
-            Deferred
-          </Link>{" "}
-          <Link
-            // @ts-expect-error
-            to="/this-route-does-not-exist"
-            activeProps={{
-              className: "font-bold"
-            }}
-          >
-            This Route Does Not Exist
-          </Link>
-        </div>
-        <hr />
-        {children}
-        <TanStackRouterDevtools position="bottom-right" />
-        <ReactQueryDevtools buttonPosition="bottom-left" />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <Devtools />
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>

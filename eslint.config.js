@@ -37,6 +37,15 @@ export default tseslint.config(
       ]
     },
     rules: {
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: {
+            attributes: false,
+            properties: false
+          }
+        }
+      ],
       "@typescript-eslint/consistent-type-imports": [
         "warn",
         {

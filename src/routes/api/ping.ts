@@ -1,11 +1,14 @@
-import { json, type JsonResponse } from "@tanstack/react-start"
+import { type ApiResponse } from "@/lib/api-fns/api-response"
+import { json } from "@tanstack/react-start"
 import { createServerFileRoute } from "@tanstack/react-start/server"
 
 export const ServerRoute = createServerFileRoute("/api/ping").methods({
-  GET: (): JsonResponse<{ ok: true; data: string }> => {
+  GET: (): ApiResponse<{ pong: string }> => {
     return json({
       ok: true,
-      data: new Date().toISOString()
+      data: {
+        pong: new Date().toISOString()
+      }
     })
   }
 })

@@ -1,7 +1,5 @@
-const name = "Startkit: Tanstack Start"
-
 export const siteConfig = {
-  name,
+  name: "Startkit",
   description: "The best way to start with Tanstack Start",
   author: {
     email: "matt@venabl.es",
@@ -9,7 +7,10 @@ export const siteConfig = {
     name: "Matt Venables",
     twitter: "@mattyven"
   },
+  links: {
+    github: "https://github.com/startkit-dev/startkit-tanstack-start"
+  },
   seo: {
-    titleTemplate: `%s | ${name} | The best way to start with Tanstack Start`
+    titleTemplate: `%s | Startkit | The best way to start with Tanstack Start`
   }
 }
