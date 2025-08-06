@@ -1,5 +1,4 @@
 {
-  "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,
@@ -18,5 +17,6 @@
       "@/*": ["./src/*"]
     },
     "noEmit": true
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.config.js"]
 }

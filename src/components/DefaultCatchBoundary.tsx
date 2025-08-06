@@ -3,9 +3,9 @@ import {
   Link,
   rootRouteId,
   useMatch,
-  useRouter
+  useRouter,
+  type ErrorComponentProps
 } from "@tanstack/react-router"
-import type { ErrorComponentProps } from "@tanstack/react-router"
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
   const router = useRouter()

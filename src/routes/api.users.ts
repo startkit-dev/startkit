@@ -6,7 +6,7 @@ import type { User } from "../utils/users"
 export const ServerRoute = createServerFileRoute("/api/users").methods({
   GET: async ({ request }) => {
     console.info("Fetching users... @", request.url)
-    const res = await axios.get<Array<User>>(
+    const res = await axios.get<User[]>(
       "https://jsonplaceholder.typicode.com/users"
     )
 
