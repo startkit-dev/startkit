@@ -8,7 +8,7 @@ export const siteConfig = {
     twitter: "@mattyven"
   },
   links: {
-    github: "https://github.com/startkit-dev/startkit-tanstack-start"
+    github: "https://github.com/startkit-dev/startkit"
   },
   seo: {
     titleTemplate: `%s | Startkit | The best way to start with Tanstack Start`

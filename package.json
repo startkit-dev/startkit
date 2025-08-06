@@ -1,5 +1,5 @@
 {
-  "name": "@startkit-dev/tanstack-start",
+  "name": "@startkit-dev/startkit",
   "private": true,
   "type": "module",
   "scripts": {

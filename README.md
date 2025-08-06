@@ -18,7 +18,7 @@
 To get started, simply clone the repository and run `bun install`:
 
 ```sh
-git clone git@github.com:startkit-dev/startkit-tanstack-start.git new-project
+git clone git@github.com:startkit-dev/startkit.git new-project
 
 cd ./new-project
 bun install
