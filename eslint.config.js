@@ -1,6 +1,7 @@
 // @ts-check
 
 import eslint from "@eslint/js"
+import router from "@tanstack/eslint-plugin-router"
 import tsParser from "@typescript-eslint/parser"
 import gitignore from "eslint-config-flat-gitignore"
 import prettier from "eslint-config-prettier"
@@ -15,6 +16,7 @@ export default tseslint.config(
   tseslint.configs.stylisticTypeChecked,
   importX.flatConfigs.recommended,
   importX.flatConfigs.typescript,
+  ...router.configs["flat/recommended"],
   {
     files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
     languageOptions: {
@@ -36,7 +38,7 @@ export default tseslint.config(
     },
     rules: {
       "@typescript-eslint/consistent-type-imports": [
-        "error",
+        "warn",
         {
           fixStyle: "inline-type-imports"
         }
