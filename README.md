@@ -1,72 +1,73 @@
-# Welcome to TanStack.com!
+# StartKit: Tanstack Start
 
-This site is built with TanStack Router!
+> A sane way to start your next Tanstack Start app
 
-- [TanStack Router Docs](https://tanstack.com/router)
+## Features
 
-It's deployed automagically with Netlify!
+✅ The latest [**Tanstack Start**](https://tanstack.com/start) with react and first-class [Tanstack Query](https://tanstack.com/query) support.
+✅ [Rolldown-powered Vite](https://vite.dev/guide/rolldown), with [React OXC](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-oxc)
+✅ Tailwind CSS 4 and [shadcn/ui](https://ui.shadcn.com) preinstalled.
+✅ Type-aware linting with shared Eslint 9 configs
+✅ Supercharged **Prettier** (with [`@prettier/plugin-oxc`](https://github.com/prettier/prettier/tree/main/packages/plugin-oxc)) for consistent code style
+✅ [Bun](https://bun.sh) package manager and test runner
+✅ Automatic CI with Github Actions
+✅ Pre-configured for [Cloudflare Workers](https://cloudflare.com) deployment
 
-- [Netlify](https://netlify.com/)
+## Getting Started
+
+To get started, simply clone the repository and run `bun install`:
+
+```sh
+git clone git@github.com:startkit-dev/startkit-tanstack-start.git new-project
+
+cd ./new-project
+bun install
+```
 
 ## Development
 
-From your terminal:
+Start the development server:
 
 ```sh
-pnpm install
-pnpm dev
+bun dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+## Code Quality
 
-## Editing and previewing the docs of TanStack projects locally
-
-The documentations for all TanStack projects except for `React Charts` are hosted on [https://tanstack.com](https://tanstack.com), powered by this TanStack Router app.
-In production, the markdown doc pages are fetched from the GitHub repos of the projects, but in development they are read from the local file system.
-
-Follow these steps if you want to edit the doc pages of a project (in these steps we'll assume it's [`TanStack/form`](https://github.com/tanstack/form)) and preview them locally :
-
-1. Create a new directory called `tanstack`.
+Run all quality checks (formatting, linting, and type checking):
 
 ```sh
-mkdir tanstack
+bun run check
 ```
 
-2. Enter the directory and clone this repo and the repo of the project there.
+Auto-fix formatting and linting issues:
 
 ```sh
-cd tanstack
-git clone git@github.com:TanStack/tanstack.com.git
-git clone git@github.com:TanStack/form.git
+bun run fix
 ```
 
-> [!NOTE]
-> Your `tanstack` directory should look like this:
->
-> ```
-> tanstack/
->    |
->    +-- form/
->    |
->    +-- tanstack.com/
-> ```
-
-> [!WARNING]
-> Make sure the name of the directory in your local file system matches the name of the project's repo. For example, `tanstack/form` must be cloned into `form` (this is the default) instead of `some-other-name`, because that way, the doc pages won't be found.
-
-3. Enter the `tanstack/tanstack.com` directory, install the dependencies and run the app in dev mode:
+Individual commands:
 
 ```sh
-cd tanstack.com
-pnpm i
-# The app will run on https://localhost:3000 by default
-pnpm dev
+bun run format          # Format code with Prettier
+bun run format:check    # Check formatting without fixing
+bun run lint            # Lint code with ESLint
+bun run lint:fix        # Auto-fix linting issues
+bun run typecheck       # Run TypeScript type checking
 ```
 
-4. Now you can visit http://localhost:3000/form/latest/docs/overview in the browser and see the changes you make in `tanstack/form/docs`.
+## Build
 
-> [!NOTE]
-> The updated pages need to be manually reloaded in the browser.
+Build for production:
 
-> [!WARNING]
-> You will need to update the `docs/config.json` file (in the project's repo) if you add a new doc page!
+```sh
+bun run build
+```
+
+## Utilities
+
+```sh
+bun run clean           # Clean cache directories
+bun run nuke            # Clean everything including node_modules
+bun run outdated        # Check for package updates interactively
+```

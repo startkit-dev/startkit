@@ -1,18 +1,16 @@
+# Dependencies
 node_modules
-package-lock.json
-yarn.lock
 
+# Misc
 .DS_Store
-.cache
+
+# Environment variables
 .env
-.vercel
+
+# Build artifacts
+.nitro
 .output
-/build/
-/api/
-/server/build
-/public/build# Sentry Config File
-.env.sentry-build-plugin
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+.tanstack
+
+# Claude
+.claude/*.local*
