@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="pb-2">
       <div className="container-wrapper px-4 xl:px-6">
         <div className="flex items-center justify-between">
-          <div className="text-muted-foreground w-full px-1 text-center text-xs leading-loose sm:text-sm">
+          <div className="w-full px-1 text-center text-xs leading-loose text-muted-foreground sm:text-sm">
             Built by{" "}
             <a
               href={siteConfig.author.link}

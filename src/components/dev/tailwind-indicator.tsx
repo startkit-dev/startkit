@@ -19,7 +19,7 @@ export function TailwindIndicator({
   return (
     <div
       className={cn(
-        "bg-foreground text-background fixed z-50 px-1 text-xs",
+        "fixed z-50 bg-foreground px-1 text-xs text-background",
         position === "bottom-left"
           ? "bottom-0 left-0 rounded-tr-sm"
           : "right-0 bottom-0 rounded-tl-sm"

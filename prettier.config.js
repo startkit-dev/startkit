@@ -5,19 +5,24 @@
  */
 const config = {
   plugins: [
-    "@prettier/plugin-oxc",
+    "@prettier/plugin-oxc", // should be first
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-packagejson",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-jsdoc",
+    "prettier-plugin-tailwindcss" // must be last
   ],
 
-  // Prettier config
+  // General config
   semi: false,
   singleQuote: false,
   trailingComma: "none",
   tabWidth: 2,
 
-  // @ianvs/prettier-plugin-sort-imports
+  // prettier-plugin-tailwindcss
+  tailwindStylesheet: "./src/styles/app.css",
+  tailwindFunctions: ["clsx", "cva", "cn"],
+
+  // prettier-plugin-sort-imports
   importOrderTypeScriptVersion: "5.6.3"
 }
 

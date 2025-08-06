@@ -9,12 +9,12 @@ export function Logo({
   return (
     <span
       className={cn(
-        "bg-foreground flex aspect-square items-center justify-center rounded-full transition-all hover:scale-105 hover:-rotate-12",
+        "flex aspect-square items-center justify-center rounded-full bg-foreground transition-all hover:scale-105 hover:-rotate-12",
         className
       )}
       {...props}
     >
-      <RocketIcon className="text-background size-3/5" />
+      <RocketIcon className="size-3/5 text-background" />
     </span>
   )
 }
