@@ -1,0 +1,13 @@
+/* `spin-once` animation */
+@theme {
+  --animate-spin-once: spin-once 0.5s ease-in-out;
+
+  @keyframes spin-once {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

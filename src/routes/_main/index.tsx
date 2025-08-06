@@ -1,13 +1,16 @@
 import { GithubIcon } from "@/components/icons/github-icon"
 import { Logo } from "@/components/logo"
+import { RefreshButton } from "@/components/refresh-button"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/config/site-config"
+import { serverTimeQueryOptions } from "@/lib/query-options/server-time-options"
 import { seo } from "@/lib/seo"
+import { useSuspenseQuery } from "@tanstack/react-query"
 import { createFileRoute } from "@tanstack/react-router"
 import { Suspense } from "react"
 
 export const Route = createFileRoute("/_main/")({
-  head: (/*{ loaderData }*/) => {
+  head: () => {
     return {
       meta: seo({ title: "A sane way to start with Tanstack Start" })
     }
@@ -57,8 +60,27 @@ function RouteComponent() {
             </a>
           </Button>
         </div>
-        <Suspense fallback="loading...">{/* <ServerTime /> */}</Suspense>
+
+        <div className="flex items-center justify-center gap-1 text-xs">
+          <span className="font-bold">Server Time:</span>
+          <Suspense fallback="Loading...">
+            <ServerTime />
+          </Suspense>
+        </div>
       </div>
     </main>
+  )
+}
+
+function ServerTime() {
+  const { data: serverTime, refetch } = useSuspenseQuery(
+    serverTimeQueryOptions()
+  )
+
+  return (
+    <>
+      <span>{serverTime.toLocaleString()}</span>
+      <RefreshButton onClick={refetch} />
+    </>
   )
 }

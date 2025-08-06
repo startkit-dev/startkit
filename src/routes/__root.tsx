@@ -114,7 +114,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<PropsWithChildren>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

@@ -37,6 +37,18 @@ export default tseslint.config(
       ]
     },
     rules: {
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        {
+          fixStyle: "inline-type-imports"
+        }
+      ],
+      "@typescript-eslint/no-empty-object-type": [
+        "warn",
+        {
+          allowInterfaces: "with-single-extends"
+        }
+      ],
       "@typescript-eslint/no-misused-promises": [
         "error",
         {
@@ -44,12 +56,6 @@ export default tseslint.config(
             attributes: false,
             properties: false
           }
-        }
-      ],
-      "@typescript-eslint/consistent-type-imports": [
-        "warn",
-        {
-          fixStyle: "inline-type-imports"
         }
       ]
     }
