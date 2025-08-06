@@ -4,14 +4,14 @@
 
 ## Features
 
-✅ The latest [**Tanstack Start**](https://tanstack.com/start) with react and first-class [Tanstack Query](https://tanstack.com/query) support.
-✅ [Rolldown-powered Vite](https://vite.dev/guide/rolldown), with [React OXC](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-oxc)
-✅ Tailwind CSS 4 and [shadcn/ui](https://ui.shadcn.com) preinstalled.
-✅ Type-aware linting with shared Eslint 9 configs
-✅ Supercharged **Prettier** (with [`@prettier/plugin-oxc`](https://github.com/prettier/prettier/tree/main/packages/plugin-oxc)) for consistent code style
-✅ [Bun](https://bun.sh) package manager and test runner
-✅ Automatic CI with Github Actions
-✅ Pre-configured for [Cloudflare Workers](https://cloudflare.com) deployment
+- ✅ The latest [**Tanstack Start**](https://tanstack.com/start) with react and first-class [Tanstack Query](https://tanstack.com/query) support.
+- ✅ [Rolldown-powered Vite](https://vite.dev/guide/rolldown), with [React OXC](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-oxc)
+- ✅ Tailwind CSS 4 and [shadcn/ui](https://ui.shadcn.com) preinstalled.
+- ✅ Type-aware linting with shared Eslint 9 configs
+- ✅ Supercharged **Prettier** (with [`@prettier/plugin-oxc`](https://github.com/prettier/prettier/tree/main/packages/plugin-oxc)) for consistent code style
+- ✅ [Bun](https://bun.sh) package manager and test runner
+- ✅ Automatic CI with Github Actions
+- ✅ Pre-configured for [Cloudflare Workers](https://cloudflare.com) deployment
 
 ## Getting Started
 
