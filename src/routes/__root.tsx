@@ -1,14 +1,13 @@
 /// <reference types="vite/client" />
 import "@fontsource-variable/geist"
 import "@fontsource-variable/geist-mono"
-import "@/styles/app.css"
 import { Devtools } from "@/components/dev/devtools"
 import { DefaultCatchBoundary } from "@/components/errors/default-catch-boundary"
 import { NotFound } from "@/components/errors/not-found"
 import { ThemeProvider } from "@/components/themes/theme-provider"
 import { seo } from "@/lib/seo"
+import styles from "@/styles/app.css?url"
 import monoFont from "@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url"
-import sansFont from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url"
 import { type QueryClient } from "@tanstack/react-query"
 import {
   createRootRouteWithContext,
@@ -44,11 +43,8 @@ export const Route = createRootRouteWithContext<{
     ],
     links: [
       {
-        rel: "preload",
-        href: sansFont,
-        as: "font",
-        type: "font/woff2",
-        crossOrigin: "anonymous"
+        rel: "stylesheet",
+        href: styles
       },
       {
         rel: "preload",

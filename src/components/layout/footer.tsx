@@ -15,7 +15,16 @@ export function Footer() {
             >
               {siteConfig.author.name}
             </a>
-            . The source code is available on{" "}
+            . Hosted on{" "}
+            <a
+              href="https://cloudflare.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Cloudflare
+            </a>
+            . Source code available on{" "}
             <a
               href={siteConfig.links.github}
               target="_blank"

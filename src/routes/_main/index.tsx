@@ -79,7 +79,7 @@ function ServerTime() {
 
   return (
     <>
-      <span>{serverTime.toLocaleString()}</span>
+      <span suppressHydrationWarning>{serverTime.toLocaleString()}</span>
       <RefreshButton onClick={refetch} />
     </>
   )
