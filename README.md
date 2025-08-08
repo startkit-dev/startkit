@@ -17,10 +17,16 @@
 
 To get started, simply clone the repository and run `bun install`:
 
-```sh
-git clone git@github.com:startkit-dev/startkit.git new-project
+1. Clone the project or [use the template](https://github.com/new?template_owner=startkit-dev&template_name=startkit)
 
-cd ./new-project
+```sh
+npx gitpick startkit-dev/startkit my-app
+cd my-app
+```
+
+2. Install the dependencies
+
+```sh
 bun install
 ```
 

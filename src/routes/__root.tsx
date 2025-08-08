@@ -4,7 +4,7 @@ import "@fontsource-variable/geist-mono"
 import { Devtools } from "@/components/dev/devtools"
 import { DefaultCatchBoundary } from "@/components/errors/default-catch-boundary"
 import { NotFound } from "@/components/errors/not-found"
-import { ThemeProvider } from "@/components/themes/theme-provider"
+import { ThemeProvider } from "@/components/theme/theme-provider"
 import { seo } from "@/lib/seo"
 import styles from "@/styles/app.css?url"
 import monoFont from "@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url"
@@ -111,7 +111,7 @@ function RootDocument({ children }: Readonly<PropsWithChildren>) {
         <HeadContent />
       </head>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider>
           {children}
           <Devtools />
         </ThemeProvider>

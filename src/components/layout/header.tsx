@@ -1,4 +1,4 @@
-import { ThemePicker } from "../themes/theme-picker"
+import { ThemePicker } from "@/components/theme/theme-picker"
 
 export function Header() {
   return (
