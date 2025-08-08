@@ -19,7 +19,7 @@ export function seo({
   const tags = [
     { title: getTitleWithTemplate(title) },
     { name: "description", content: description },
-    { name: "keywords", content: keywords },
+    ...(keywords ? [{ name: "keywords", content: keywords }] : []),
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
     { name: "twitter:creator", content: siteConfig.author.twitter },
