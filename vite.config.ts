@@ -14,9 +14,12 @@ export default defineConfig({
     }),
     tanstackStart({
       customViteReactPlugin: true,
-      target: "cloudflare-module"
+      target: "cloudflare-module",
+      tsr: {
+        quoteStyle: "double"
+      }
     }),
-    react(),
+    react({}),
     tailwindcss()
   ]
 })

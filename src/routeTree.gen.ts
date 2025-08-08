@@ -8,98 +8,98 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createServerRootRoute } from '@tanstack/react-start/server'
+import { createServerRootRoute } from "@tanstack/react-start/server"
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as MainRouteImport } from './routes/_main'
-import { Route as MainIndexRouteImport } from './routes/_main/index'
-import { ServerRoute as ApiPingServerRouteImport } from './routes/api/ping'
+import { Route as rootRouteImport } from "./routes/__root"
+import { Route as MainRouteImport } from "./routes/_main"
+import { Route as MainIndexRouteImport } from "./routes/_main/index"
+import { ServerRoute as ApiPingServerRouteImport } from "./routes/api/ping"
 
 const rootServerRouteImport = createServerRootRoute()
 
 const MainRoute = MainRouteImport.update({
-  id: '/_main',
+  id: "/_main",
   getParentRoute: () => rootRouteImport,
 } as any)
 const MainIndexRoute = MainIndexRouteImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => MainRoute,
 } as any)
 const ApiPingServerRoute = ApiPingServerRouteImport.update({
-  id: '/api/ping',
-  path: '/api/ping',
+  id: "/api/ping",
+  path: "/api/ping",
   getParentRoute: () => rootServerRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof MainIndexRoute
+  "/": typeof MainIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof MainIndexRoute
+  "/": typeof MainIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_main': typeof MainRouteWithChildren
-  '/_main/': typeof MainIndexRoute
+  "/_main": typeof MainRouteWithChildren
+  "/_main/": typeof MainIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: "/"
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_main' | '/_main/'
+  to: "/"
+  id: "__root__" | "/_main" | "/_main/"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   MainRoute: typeof MainRouteWithChildren
 }
 export interface FileServerRoutesByFullPath {
-  '/api/ping': typeof ApiPingServerRoute
+  "/api/ping": typeof ApiPingServerRoute
 }
 export interface FileServerRoutesByTo {
-  '/api/ping': typeof ApiPingServerRoute
+  "/api/ping": typeof ApiPingServerRoute
 }
 export interface FileServerRoutesById {
   __root__: typeof rootServerRouteImport
-  '/api/ping': typeof ApiPingServerRoute
+  "/api/ping": typeof ApiPingServerRoute
 }
 export interface FileServerRouteTypes {
   fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/api/ping'
+  fullPaths: "/api/ping"
   fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/api/ping'
-  id: '__root__' | '/api/ping'
+  to: "/api/ping"
+  id: "__root__" | "/api/ping"
   fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
   ApiPingServerRoute: typeof ApiPingServerRoute
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/_main': {
-      id: '/_main'
-      path: ''
-      fullPath: ''
+    "/_main": {
+      id: "/_main"
+      path: ""
+      fullPath: ""
       preLoaderRoute: typeof MainRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_main/': {
-      id: '/_main/'
-      path: '/'
-      fullPath: '/'
+    "/_main/": {
+      id: "/_main/"
+      path: "/"
+      fullPath: "/"
       preLoaderRoute: typeof MainIndexRouteImport
       parentRoute: typeof MainRoute
     }
   }
 }
-declare module '@tanstack/react-start/server' {
+declare module "@tanstack/react-start/server" {
   interface ServerFileRoutesByPath {
-    '/api/ping': {
-      id: '/api/ping'
-      path: '/api/ping'
-      fullPath: '/api/ping'
+    "/api/ping": {
+      id: "/api/ping"
+      path: "/api/ping"
+      fullPath: "/api/ping"
       preLoaderRoute: typeof ApiPingServerRouteImport
       parentRoute: typeof rootServerRouteImport
     }
