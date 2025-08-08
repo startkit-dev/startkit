@@ -4,13 +4,7 @@ import { createServerFn } from "@tanstack/react-start"
 /**
  * Server function to get the current time
  */
-const getServerTime = createServerFn().handler(async () => {
-  return new Promise<string>((resolve) => {
-    setTimeout(() => {
-      resolve(new Date().toISOString())
-    }, 1000)
-  })
-})
+const getServerTime = createServerFn().handler(() => new Date().toISOString())
 
 /**
  * Query options for the server time

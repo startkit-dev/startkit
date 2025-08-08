@@ -26,11 +26,15 @@ export function RefreshButton({
         isSpinning && "animate-spin-once"
       )}
       onClick={async () => {
+        if (isSpinning) {
+          return
+        }
+
         setIsSpinning(true)
         await onClick?.()
         setTimeout(() => {
           setIsSpinning(false)
-        }, 1000)
+        }, 600)
       }}
       {...props}
     >
