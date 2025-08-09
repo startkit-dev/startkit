@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "check": "bun run format:check && bun run lint && bun run typecheck",
+    "check": "bun run format:check && bun run lint && bun run typecheck && bun test",
     "clean": "git clean -xdf node_modules/.cache .tanstack .output .nitro",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
@@ -49,6 +49,7 @@
     "@prettier/plugin-oxc": "^0.0.4",
     "@tailwindcss/vite": "^4.1.11",
     "@tanstack/eslint-plugin-router": "^1.130.12",
+    "@types/bun": "latest",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react-oxc": "^0.4.0",

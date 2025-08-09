@@ -60,6 +60,7 @@ bun run format:check    # Check formatting without fixing
 bun run lint            # Lint code with ESLint
 bun run lint:fix        # Auto-fix linting issues
 bun run typecheck       # Run TypeScript type checking
+bun test                # Run the test suite
 ```
 
 ## Database
