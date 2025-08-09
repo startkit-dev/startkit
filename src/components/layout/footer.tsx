@@ -5,28 +5,19 @@ export function Footer() {
     <footer className="flex flex-col gap-4 p-8 text-tiny uppercase underline-offset-4">
       <div className="flex w-full flex-col-reverse justify-between sm:flex-row">
         <div className="flex flex-row justify-between sm:flex-col sm:justify-start">
-          <p>System Status</p>
-          <p>
+          <div>System Status</div>
+          <div>
             <span className="relative mr-2 inline-flex size-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>{" "}
               <span className="relative inline-flex size-2 rounded-full bg-green-500"></span>
             </span>
             <span>OK</span>
-          </p>
+          </div>
         </div>
 
         <div className="flex flex-row justify-between sm:flex-col sm:items-end sm:justify-start">
-          <p>Deployed to</p>
-          <p>
-            <a
-              href="https://www.cloudflare.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:underline"
-            >
-              Cloudflare
-            </a>
-          </p>
+          <div>Deployed on</div>
+          <HostingProvider />
         </div>
       </div>
 
@@ -49,5 +40,27 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  )
+}
+
+function HostingProvider() {
+  const isVercel = !!import.meta.env.VITE_VERCEL
+  const isCloudflare = !isVercel && import.meta.env.PROD
+
+  return (
+    <a
+      href={
+        isVercel
+          ? "https://vercel.com"
+          : isCloudflare
+            ? "https://www.cloudflare.com"
+            : "http://localhost:3000"
+      }
+      target="_blank"
+      rel="noreferrer"
+      className="hover:underline"
+    >
+      {isVercel ? "Vercel" : isCloudflare ? "Cloudflare" : "Localhost"}
+    </a>
   )
 }
