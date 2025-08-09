@@ -30,7 +30,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col justify-between gap-4 border-t pt-6 sm:flex-row sm:items-center">
+      <div className="flex flex-col-reverse items-center gap-4 border-t pt-6 sm:flex-row sm:justify-between">
         <p>
           © {new Date().getFullYear()}{" "}
           <a href={siteConfig.author.link} className="hover:underline">
