@@ -18,6 +18,7 @@
     "lint:fix": "eslint --fix .",
     "nuke": "bun run clean && git clean -xdf node_modules",
     "outdated": "npx npm-check-updates --interactive --format group",
+    "setup": "bin/setup",
     "start": "vite start",
     "typecheck": "tsc --noEmit --pretty"
   },
@@ -51,6 +52,7 @@
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react-oxc": "^0.4.0",
+    "dotkit": "^1.5.0",
     "drizzle-kit": "^0.31.4",
     "eslint": "^9.33.0",
     "eslint-config-flat-gitignore": "^2.1.0",
