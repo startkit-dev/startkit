@@ -14,6 +14,7 @@ import { Route as rootRouteImport } from "./routes/__root"
 import { Route as MainRouteImport } from "./routes/_main"
 import { Route as MainIndexRouteImport } from "./routes/_main/index"
 import { ServerRoute as ApiPingServerRouteImport } from "./routes/api/ping"
+import { ServerRoute as ApiAuthSplatServerRouteImport } from "./routes/api/auth/$"
 
 const rootServerRouteImport = createServerRootRoute()
 
@@ -29,6 +30,11 @@ const MainIndexRoute = MainIndexRouteImport.update({
 const ApiPingServerRoute = ApiPingServerRouteImport.update({
   id: "/api/ping",
   path: "/api/ping",
+  getParentRoute: () => rootServerRouteImport,
+} as any)
+const ApiAuthSplatServerRoute = ApiAuthSplatServerRouteImport.update({
+  id: "/api/auth/$",
+  path: "/api/auth/$",
   getParentRoute: () => rootServerRouteImport,
 } as any)
 
@@ -56,24 +62,28 @@ export interface RootRouteChildren {
 }
 export interface FileServerRoutesByFullPath {
   "/api/ping": typeof ApiPingServerRoute
+  "/api/auth/$": typeof ApiAuthSplatServerRoute
 }
 export interface FileServerRoutesByTo {
   "/api/ping": typeof ApiPingServerRoute
+  "/api/auth/$": typeof ApiAuthSplatServerRoute
 }
 export interface FileServerRoutesById {
   __root__: typeof rootServerRouteImport
   "/api/ping": typeof ApiPingServerRoute
+  "/api/auth/$": typeof ApiAuthSplatServerRoute
 }
 export interface FileServerRouteTypes {
   fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: "/api/ping"
+  fullPaths: "/api/ping" | "/api/auth/$"
   fileServerRoutesByTo: FileServerRoutesByTo
-  to: "/api/ping"
-  id: "__root__" | "/api/ping"
+  to: "/api/ping" | "/api/auth/$"
+  id: "__root__" | "/api/ping" | "/api/auth/$"
   fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
   ApiPingServerRoute: typeof ApiPingServerRoute
+  ApiAuthSplatServerRoute: typeof ApiAuthSplatServerRoute
 }
 
 declare module "@tanstack/react-router" {
@@ -103,6 +113,13 @@ declare module "@tanstack/react-start/server" {
       preLoaderRoute: typeof ApiPingServerRouteImport
       parentRoute: typeof rootServerRouteImport
     }
+    "/api/auth/$": {
+      id: "/api/auth/$"
+      path: "/api/auth/$"
+      fullPath: "/api/auth/$"
+      preLoaderRoute: typeof ApiAuthSplatServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
   }
 }
 
@@ -124,6 +141,7 @@ export const routeTree = rootRouteImport
   ._addFileTypes<FileRouteTypes>()
 const rootServerRouteChildren: RootServerRouteChildren = {
   ApiPingServerRoute: ApiPingServerRoute,
+  ApiAuthSplatServerRoute: ApiAuthSplatServerRoute,
 }
 export const serverRouteTree = rootServerRouteImport
   ._addFileChildren(rootServerRouteChildren)
