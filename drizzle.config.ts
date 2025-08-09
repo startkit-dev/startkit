@@ -2,9 +2,7 @@ import { defineConfig } from "drizzle-kit"
 
 const dbUrl = process.env.DATABASE_URL!
 const dbAuthToken = process.env.DATABASE_AUTH_TOKEN!
-const dialect = process.env.DATABASE_URL?.startsWith("file:")
-  ? "sqlite"
-  : "turso"
+const dialect = dbUrl.startsWith("file:") ? "sqlite" : "turso"
 
 export default defineConfig({
   out: "./drizzle",
