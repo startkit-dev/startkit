@@ -4,6 +4,7 @@ import { RefreshButton } from "@/components/refresh-button"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/config/site-config"
 import { serverTimeQueryOptions } from "@/lib/query-options/server-time-options"
+import { usersCountQueryOptions } from "@/lib/query-options/users-count-options"
 import { seo } from "@/lib/seo"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { createFileRoute } from "@tanstack/react-router"
@@ -67,6 +68,13 @@ function RouteComponent() {
             <ServerTime />
           </Suspense>
         </div>
+
+        <div className="flex items-center justify-center gap-1 text-xs">
+          <span className="font-bold">Users:</span>
+          <Suspense fallback="Loading...">
+            <UsersCount />
+          </Suspense>
+        </div>
       </div>
     </main>
   )
@@ -80,6 +88,19 @@ function ServerTime() {
   return (
     <>
       <span suppressHydrationWarning>{serverTime.toLocaleString()}</span>
+      <RefreshButton onClick={refetch} />
+    </>
+  )
+}
+
+function UsersCount() {
+  const { data: usersCount, refetch } = useSuspenseQuery(
+    usersCountQueryOptions()
+  )
+
+  return (
+    <>
+      <span suppressHydrationWarning>{usersCount}</span>
       <RefreshButton onClick={refetch} />
     </>
   )

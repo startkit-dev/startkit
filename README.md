@@ -62,6 +62,10 @@ bun run lint:fix        # Auto-fix linting issues
 bun run typecheck       # Run TypeScript type checking
 ```
 
+## Database
+
+This project uses [Drizzle ORM](https://orm.drizzle.team) pre-configured for SQLite.
+
 ## Build
 
 Build for production:

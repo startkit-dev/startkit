@@ -6,6 +6,10 @@
     "build": "vite build",
     "check": "bun run format:check && bun run lint && bun run typecheck",
     "clean": "git clean -xdf node_modules/.cache .tanstack .output .nitro",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:reset": "git clean -xdf sqlite.db && bun db:migrate",
+    "db:studio": "drizzle-kit studio",
     "dev": "vite dev",
     "fix": "bun run format && bun run lint:fix",
     "format": "prettier --experimental-cli --write .",
@@ -20,6 +24,7 @@
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.6",
     "@fontsource-variable/geist-mono": "^5.2.6",
+    "@libsql/client": "^0.15.10",
     "@tanstack/react-query": "^5.84.2",
     "@tanstack/react-query-devtools": "^5.84.2",
     "@tanstack/react-router": "^1.130.12",
@@ -28,11 +33,13 @@
     "@tanstack/react-start": "^1.130.16",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.44.4",
     "lucide-react": "^0.539.0",
     "radix-ui": "^1.4.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.0.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
@@ -43,6 +50,7 @@
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react-oxc": "^0.4.0",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9.33.0",
     "eslint-config-flat-gitignore": "^2.1.0",
     "eslint-config-prettier": "^10.1.8",
