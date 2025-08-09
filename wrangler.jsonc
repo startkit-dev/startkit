@@ -9,5 +9,9 @@
   },
   "observability": {
     "enabled": true
+  },
+  "vars": {
+    "BETTER_AUTH_URL": "https://startkit.dev",
+    "GITHUB_CLIENT_ID": "89d7575efa72f0ca87d8"
   }
 }
