@@ -1,9 +1,6 @@
-import { GithubIcon } from "@/components/icons/github-icon"
-import { Logo } from "@/components/logo"
+import { Wordmark } from "@/components/brand/wordmark"
 import { RefreshButton } from "@/components/refresh-button"
 import { Button } from "@/components/ui/button"
-import { siteConfig } from "@/config/site-config"
-import { signIn, signOut, useSession } from "@/lib/auth-client"
 import { serverTimeQueryOptions } from "@/lib/query-options/server-time-options"
 import { usersCountQueryOptions } from "@/lib/query-options/users-count-options"
 import { seo } from "@/lib/seo"
@@ -21,16 +18,11 @@ export const Route = createFileRoute("/_main/")({
 })
 
 function RouteComponent() {
-  const { data: session } = useSession()
-
   return (
     <main className="flex grow items-center justify-center p-2">
       <div className="container mx-auto flex max-w-md flex-col items-start gap-8">
         <div className="flex flex-row items-center gap-2">
-          <Logo className="size-11" />
-          <h1 className="font-mono text-3xl font-extrabold">
-            {siteConfig.name}
-          </h1>
+          <Wordmark className="h-11" />
         </div>
         <ol className="list-inside list-decimal text-left font-mono text-sm">
           <li className="mb-2">
@@ -43,21 +35,7 @@ function RouteComponent() {
         </ol>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row">
-          {session ? (
-            <Button variant="default" onClick={() => signOut()}>
-              Log out
-            </Button>
-          ) : (
-            <Button
-              variant="default"
-              onClick={() => signIn.social({ provider: "github" })}
-            >
-              <GithubIcon className="size-4" />
-              Log in with GitHub
-            </Button>
-          )}
-
-          <Button variant="ghost" asChild>
+          <Button variant="secondary" asChild>
             <a
               href="https://tanstack.com/router/latest/docs/framework/react/start/overview"
               rel="noopener noreferrer"

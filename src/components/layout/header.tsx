@@ -1,22 +1,26 @@
 import { ThemePicker } from "@/components/theme/theme-picker"
 import { Button } from "@/components/ui/button"
-import { signIn, useSession } from "@/lib/auth-client"
+import { useSession } from "@/lib/auth-client"
+import { Link } from "@tanstack/react-router"
+import { Wordmark } from "../brand/wordmark"
 import { UserDropdown } from "./user-dropdown"
 
 export function Header() {
   const { data: session } = useSession()
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur-3xl">
-      <div className="flex flex-row items-center justify-between gap-2 p-2">
-        <div></div>
+    <header className="sticky top-0 z-50 h-14 w-full border-b bg-background/30 backdrop-blur-xl">
+      <div className="container mx-auto flex h-full flex-row items-center justify-between gap-2 p-2">
+        <Link to="/">
+          <Wordmark className="h-6" />
+        </Link>
         <div className="flex flex-row items-center gap-2">
           <ThemePicker />
           {session ? (
             <UserDropdown user={session.user} />
           ) : (
-            <Button onClick={() => signIn.social({ provider: "github" })}>
-              Sign in
+            <Button variant="secondary" size="sm" asChild>
+              <Link to="/login">Log in</Link>
             </Button>
           )}
         </div>

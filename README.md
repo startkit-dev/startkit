@@ -24,11 +24,13 @@ npx gitpick startkit-dev/startkit my-app
 cd my-app
 ```
 
-2. Install the dependencies
+2. Run the setup script
 
 ```sh
-bun install
+bun run setup
 ```
+
+This script (located in `./bin/setup`) will install the dependencies, set up your local .env file, and migrate the database.
 
 ## Development
 

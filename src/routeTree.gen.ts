@@ -12,7 +12,9 @@ import { createServerRootRoute } from "@tanstack/react-start/server"
 
 import { Route as rootRouteImport } from "./routes/__root"
 import { Route as MainRouteImport } from "./routes/_main"
+import { Route as AuthRouteImport } from "./routes/_auth"
 import { Route as MainIndexRouteImport } from "./routes/_main/index"
+import { Route as AuthLoginRouteImport } from "./routes/_auth/login"
 import { ServerRoute as ApiPingServerRouteImport } from "./routes/api/ping"
 import { ServerRoute as ApiAuthSplatServerRouteImport } from "./routes/api/auth/$"
 
@@ -22,10 +24,19 @@ const MainRoute = MainRouteImport.update({
   id: "/_main",
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: "/_auth",
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MainIndexRoute = MainIndexRouteImport.update({
   id: "/",
   path: "/",
   getParentRoute: () => MainRoute,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: "/login",
+  path: "/login",
+  getParentRoute: () => AuthRoute,
 } as any)
 const ApiPingServerRoute = ApiPingServerRouteImport.update({
   id: "/api/ping",
@@ -39,25 +50,30 @@ const ApiAuthSplatServerRoute = ApiAuthSplatServerRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  "/login": typeof AuthLoginRoute
   "/": typeof MainIndexRoute
 }
 export interface FileRoutesByTo {
+  "/login": typeof AuthLoginRoute
   "/": typeof MainIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  "/_auth": typeof AuthRouteWithChildren
   "/_main": typeof MainRouteWithChildren
+  "/_auth/login": typeof AuthLoginRoute
   "/_main/": typeof MainIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "/"
+  fullPaths: "/login" | "/"
   fileRoutesByTo: FileRoutesByTo
-  to: "/"
-  id: "__root__" | "/_main" | "/_main/"
+  to: "/login" | "/"
+  id: "__root__" | "/_auth" | "/_main" | "/_auth/login" | "/_main/"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthRoute: typeof AuthRouteWithChildren
   MainRoute: typeof MainRouteWithChildren
 }
 export interface FileServerRoutesByFullPath {
@@ -95,12 +111,26 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof MainRouteImport
       parentRoute: typeof rootRouteImport
     }
+    "/_auth": {
+      id: "/_auth"
+      path: ""
+      fullPath: ""
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     "/_main/": {
       id: "/_main/"
       path: "/"
       fullPath: "/"
       preLoaderRoute: typeof MainIndexRouteImport
       parentRoute: typeof MainRoute
+    }
+    "/_auth/login": {
+      id: "/_auth/login"
+      path: "/login"
+      fullPath: "/login"
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof AuthRoute
     }
   }
 }
@@ -123,6 +153,16 @@ declare module "@tanstack/react-start/server" {
   }
 }
 
+interface AuthRouteChildren {
+  AuthLoginRoute: typeof AuthLoginRoute
+}
+
+const AuthRouteChildren: AuthRouteChildren = {
+  AuthLoginRoute: AuthLoginRoute,
+}
+
+const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+
 interface MainRouteChildren {
   MainIndexRoute: typeof MainIndexRoute
 }
@@ -134,6 +174,7 @@ const MainRouteChildren: MainRouteChildren = {
 const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthRoute: AuthRouteWithChildren,
   MainRoute: MainRouteWithChildren,
 }
 export const routeTree = rootRouteImport
