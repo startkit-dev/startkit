@@ -6,7 +6,7 @@ import { Wordmark } from "../brand/wordmark"
 import { UserDropdown } from "./user-dropdown"
 
 export function Header() {
-  const { data: session } = useSession()
+  const { data: session, isPending } = useSession()
 
   return (
     <header className="sticky top-0 z-50 h-14 w-full border-b bg-background/30 backdrop-blur-xl">
@@ -16,7 +16,9 @@ export function Header() {
         </Link>
         <div className="flex flex-row items-center gap-2">
           <ThemePicker />
-          {session ? (
+          {isPending ? (
+            <Button variant="ghost" disabled></Button>
+          ) : session ? (
             <UserDropdown user={session.user} />
           ) : (
             <Button variant="secondary" size="sm" asChild>
