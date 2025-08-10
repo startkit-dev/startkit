@@ -16,6 +16,9 @@ This is a TanStack Start application with React, using Bun as the package manage
 - Rolldown-powered Vite for build tooling
 - Bun for package management
 - TypeScript with strict configuration
+- Better-Auth for authentication with GitHub OAuth
+- Drizzle ORM with SQLite (local) and Turso (production)
+- Valibot for environment variable validation
 
 ## Common Commands
 
@@ -29,13 +32,23 @@ bun start               # Start production server
 **Code Quality:**
 
 ```bash
-bun run check           # Run all checks (format, lint, typecheck)
+bun run check           # Run all checks (format, lint, typecheck, tests)
 bun run fix             # Auto-fix formatting and linting issues
 bun run format          # Format code with Prettier
 bun run format:check    # Check code formatting
 bun run lint            # Lint code with ESLint
 bun run lint:fix        # Auto-fix linting issues
 bun run typecheck       # Run TypeScript type checking
+bun test                # Run the test suite
+```
+
+**Database:**
+
+```bash
+bun run db:generate     # Generate database schema migrations
+bun run db:migrate      # Apply database migrations
+bun run db:reset        # Reset database (clean + migrate)
+bun run db:studio       # Open Drizzle Studio GUI
 ```
 
 **Build & Deployment:**
@@ -69,6 +82,17 @@ bun run outdated        # Check for package updates interactively
 - `src/components/errors/` - Error boundaries and not found pages
 - `src/components/dev/` - Development-only components (devtools, indicators)
 
+**Database & Authentication:**
+
+- `src/db/` - Database configuration and schemas
+  - `src/db/client.ts` - Drizzle database client with libSQL
+  - `src/db/schema.ts` - Database schema definitions
+  - `src/db/schemas/auth-schema.ts` - Better-Auth schema tables
+- `src/lib/auth.ts` - Better-Auth server configuration
+- `src/lib/auth-client.ts` - Better-Auth client utilities
+- `src/env.ts` - Environment variable validation with Valibot
+- `drizzle.config.ts` - Drizzle Kit configuration (SQLite/Turso)
+
 **Configuration:**
 
 - `src/config/site-config.ts` - Site-wide configuration
@@ -82,6 +106,10 @@ bun run outdated        # Check for package updates interactively
 - Theme system with system/light/dark mode support
 - Font preloading with Geist variable fonts
 - API routes in `src/routes/api/` directory
+- Better-Auth integration with GitHub OAuth provider
+- Drizzle ORM with libSQL client (supports both SQLite and Turso)
+- Environment-aware database configuration (SQLite for local, Turso for production)
+- Valibot schema validation for type-safe environment variables
 
 ## Development Notes
 

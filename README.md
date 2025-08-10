@@ -7,6 +7,9 @@
 - ✅ The latest [**Tanstack Start**](https://tanstack.com/start) with react and first-class [Tanstack Query](https://tanstack.com/query) support.
 - ✅ [Rolldown-powered Vite](https://vite.dev/guide/rolldown), with [React OXC](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-oxc)
 - ✅ Tailwind CSS 4 and [shadcn/ui](https://ui.shadcn.com) preinstalled.
+- ✅ [Better-Auth](https://better-auth.com) authentication with GitHub OAuth provider
+- ✅ [Drizzle ORM](https://orm.drizzle.team) with SQLite (local) and [Turso](https://turso.tech) (production)
+- ✅ [Valibot](https://valibot.dev) for type-safe environment variable validation
 - ✅ Type-aware linting with shared Eslint 9 configs
 - ✅ Supercharged **Prettier** (with [`@prettier/plugin-oxc`](https://github.com/prettier/prettier/tree/main/packages/plugin-oxc)) for consistent code style
 - ✅ [Bun](https://bun.sh) package manager and test runner
@@ -67,7 +70,25 @@ bun test                # Run the test suite
 
 ## Database
 
-This project uses [Drizzle ORM](https://orm.drizzle.team) pre-configured for SQLite.
+This project uses [Drizzle ORM](https://orm.drizzle.team) with [libSQL](https://github.com/libsql/libsql), configured for SQLite in development and [Turso](https://turso.tech) in production.
+
+Database commands:
+
+```sh
+bun run db:generate     # Generate database schema migrations
+bun run db:migrate      # Apply database migrations
+bun run db:reset        # Reset database (clean + migrate)
+bun run db:studio       # Open Drizzle Studio GUI
+```
+
+## Authentication
+
+Authentication is handled by [Better-Auth](https://better-auth.com) with:
+
+- GitHub OAuth provider pre-configured
+- User, session, account, and verification tables
+- Drizzle adapter integration
+- Type-safe environment configuration
 
 ## Build
 
