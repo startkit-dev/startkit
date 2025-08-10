@@ -27,7 +27,7 @@ function RouteComponent() {
         <ol className="list-inside list-decimal text-left font-mono text-sm">
           <li className="mb-2">
             Get started by editing{" "}
-            <code className="rounded bg-black/[.05] px-1 py-0.5 font-semibold dark:bg-white/[.06]">
+            <code className="rounded bg-foreground/[.05] px-1 py-0.5 font-semibold">
               src/routes/_main/index.tsx
             </code>
           </li>

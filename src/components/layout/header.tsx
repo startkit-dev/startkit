@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { useSession } from "@/lib/auth-client"
 import { Link } from "@tanstack/react-router"
 import { Wordmark } from "../brand/wordmark"
-import { UserDropdown } from "./user-dropdown"
+import { UserMenu } from "./user-menu"
 
 export function Header() {
   const { data: session, isPending } = useSession()
@@ -19,7 +19,7 @@ export function Header() {
           {isPending ? (
             <Button variant="ghost" disabled></Button>
           ) : session ? (
-            <UserDropdown user={session.user} />
+            <UserMenu user={session.user} />
           ) : (
             <Button variant="secondary" size="sm" asChild>
               <Link to="/login">Log in</Link>
