@@ -23,7 +23,7 @@ const config = {
   tailwindFunctions: ["clsx", "cva", "cn"],
 
   // prettier-plugin-sort-imports
-  importOrderTypeScriptVersion: "5.6.3"
+  importOrderTypeScriptVersion: "5"
 }
 
 export default config

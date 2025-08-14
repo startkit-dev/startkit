@@ -5,7 +5,7 @@
 ## Features
 
 - ✅ The latest [**Tanstack Start**](https://tanstack.com/start) with react and first-class [Tanstack Query](https://tanstack.com/query) support.
-- ✅ [Rolldown-powered Vite](https://vite.dev/guide/rolldown), with [React OXC](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react-oxc)
+- ✅ [Rolldown-powered Vite](https://vite.dev/guide/rolldown), with [React (OXC)](https://github.com/vitejs/vite-plugin-react)
 - ✅ Tailwind CSS 4 and [shadcn/ui](https://ui.shadcn.com) preinstalled.
 - ✅ [Better-Auth](https://better-auth.com) authentication with GitHub OAuth provider
 - ✅ [Drizzle ORM](https://orm.drizzle.team) with SQLite (local) and [Turso](https://turso.tech) (production)
